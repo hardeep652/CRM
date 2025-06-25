@@ -1,6 +1,7 @@
 package com.example.CRM.config;
 
-import com.example.CRM.service.UsersDetailsService;
+import java.util.Arrays;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,8 +17,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.example.CRM.service.UsersDetailsService;
+
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -76,10 +78,15 @@ public class SecurityConfig {
             .formLogin(login -> login
                 .loginProcessingUrl("/api/auth/login")
                 .successHandler((request, response, authentication) -> {
-                    response.setStatus(HttpServletResponse.SC_OK);
-                    response.setContentType("application/json");
-                    response.getWriter().write("{\"message\":\"Login successful\"}");
-                })
+    response.setStatus(HttpServletResponse.SC_OK);
+    response.setContentType("application/json");
+
+    org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
+    String role = user.getAuthorities().iterator().next().getAuthority();
+
+    response.getWriter().write("{\"message\":\"Login successful\",\"role\":\"" + role + "\",\"username\":\"" + user.getUsername() + "\"}");
+})
+
                 .failureHandler((request, response, exception) -> {
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                     response.setContentType("application/json");

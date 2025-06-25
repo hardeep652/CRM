@@ -1,10 +1,15 @@
 package com.example.CRM.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
@@ -54,6 +59,14 @@ public class Users {
 
     @Size(max = 50, message = "Department cannot exceed 50 characters")
     private String department;
+
+    @ManyToOne
+@JoinColumn(name = "manager_id")
+private Users manager;  // Manager for this employee
+
+@OneToMany(mappedBy = "manager")
+private List<Users> teamMembers;  // Employees under this manager
+
 
 
     public Long getId() {
