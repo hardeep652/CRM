@@ -52,7 +52,7 @@ const ManagerDashboard = () => {
     setError(null);
     try {
       // Fetch team leads using manager API
-      const leadsResponse = await fetch('http://localhost:8080/api/manager/leads', {
+      const leadsResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/manager/leads`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -66,7 +66,7 @@ const ManagerDashboard = () => {
       setLeads(leadsData);
 
       // Fetch team clients using manager API
-      const clientsResponse = await fetch('http://localhost:8080/api/manager/team-clients', {
+      const clientsResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/manager/team-clients`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

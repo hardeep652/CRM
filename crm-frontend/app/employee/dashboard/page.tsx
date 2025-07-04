@@ -68,7 +68,7 @@ const EmployeeDashboard = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const leadsResponse = await fetch('http://localhost:8080/api/leads/myLeads', {
+      const leadsResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/leads/myLeads`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -81,7 +81,7 @@ const EmployeeDashboard = () => {
       const leadsData: Lead[] = await leadsResponse.json();
       setLeads(leadsData);
 
-      const tasksResponse = await fetch('http://localhost:8080/api/tasks/myTasks', {
+      const tasksResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tasks/myTasks`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -94,7 +94,7 @@ const EmployeeDashboard = () => {
       const tasksData: Task[] = await tasksResponse.json();
       setTasks(tasksData);
 
-      const clientsResponse = await fetch('http://localhost:8080/api/clients/myClients', {
+      const clientsResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clients/myClients`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

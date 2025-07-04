@@ -155,7 +155,7 @@ const EmployeeDetailPanel: React.FC<EmployeeDetailPanelProps> = ({
 
       console.log('Sending payload:', JSON.stringify(payload, null, 2));
 
-      const response = await fetch(`http://localhost:8080/api/admin/updateEmployee/${employee.id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/updateEmployee/${employee.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -534,7 +534,7 @@ const EmployeeDashboard: React.FC = () => {
     const fetchEmployees = async () => {
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:8080/api/admin/allEmployees', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/allEmployees`, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',

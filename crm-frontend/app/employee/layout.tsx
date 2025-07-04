@@ -32,7 +32,7 @@ const EmployeeLayout: React.FC<EmployeeLayoutProps> = ({ children }) => {
 
   const handleLogout = async () => {
     try {
-      await fetch('http://localhost:8080/logout', {
+      await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/logout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ const EmployeeLayout: React.FC<EmployeeLayoutProps> = ({ children }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:8080/api/employees/change-password', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/employees/change-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

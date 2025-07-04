@@ -23,7 +23,7 @@ const AdminClients = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:8080/api/admin/allClients', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/allClients`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

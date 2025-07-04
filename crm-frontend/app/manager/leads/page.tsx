@@ -102,7 +102,7 @@
 
     const handleLogout = async () => {
         try {
-        await fetch('http://localhost:8080/logout', {
+        await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/logout`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -153,7 +153,7 @@
         setIsLoading(true);
         setError(null);
         try {
-        const response = await fetch('http://localhost:8080/api/manager/leads', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/manager/leads`, {
             method: 'GET',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
@@ -188,7 +188,7 @@
             body.rejectionReason = rejectionReason;
         }
 
-        const response = await fetch('http://localhost:8080/api/manager/approve-or-reject', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/manager/approve-or-reject`, {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },

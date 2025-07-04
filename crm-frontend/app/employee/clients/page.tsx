@@ -23,7 +23,7 @@ const Clients = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:8080/api/clients/myClients', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clients/myClients`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

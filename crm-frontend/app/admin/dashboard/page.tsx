@@ -56,7 +56,7 @@ const Dashboard = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const leadsResponse = await fetch('http://localhost:8080/api/admin/allLeads', {
+      const leadsResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/allLeads`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -69,7 +69,7 @@ const Dashboard = () => {
       const leadsData: Lead[] = await leadsResponse.json();
       setLeads(leadsData);
 
-      const clientsResponse = await fetch('http://localhost:8080/api/admin/allClients', {
+      const clientsResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/allClients`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -135,7 +135,7 @@ const Dashboard = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:8080/api/admin/addEmployee', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/addEmployee`, {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -246,7 +246,7 @@ ${leadSourceData.map(source => `${source.name.replace('&', '\\&')} & ${source.va
       `;
 
       // Send LaTeX content to a server endpoint for PDF compilation
-      const response = await fetch('http://localhost:8080/api/export/pdf', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/export/pdf`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ latex: latexContent }),

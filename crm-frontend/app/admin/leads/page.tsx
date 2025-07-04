@@ -57,7 +57,7 @@ const Leads = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:8080/api/admin/allLeads', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/allLeads`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

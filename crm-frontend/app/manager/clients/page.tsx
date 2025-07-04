@@ -25,7 +25,7 @@ const ManagerClients = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:8080/api/manager/team-clients', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/manager/team-clients`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

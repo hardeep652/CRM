@@ -54,7 +54,7 @@ const AddEmployee: React.FC = () => {
       setManagerLoading(true);
       setManagerError(null);
       try {
-        const response = await fetch('http://localhost:8080/api/admin/allEmployees', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/allEmployees`, {
           method: 'GET',
           credentials: 'include',
           headers: { 'Content-Type': 'application/json' },
@@ -186,7 +186,9 @@ const AddEmployee: React.FC = () => {
         manager_id: formData.manager?.id || null,
       };
 
-      const response = await fetch('http://localhost:8080/api/admin/addEmployee', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/addEmployee`,
+      // const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/contact/sendinquiry`, {
+         {
         method: 'POST',
         credentials: 'include',
         headers: {

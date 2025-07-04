@@ -79,7 +79,7 @@ const Leads = () => {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await fetch("http://localhost:8080/api/leads/myLeads", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/leads/myLeads`, {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -108,7 +108,7 @@ const Leads = () => {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await fetch("http://localhost:8080/api/leads/newLead", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/leads/newLead`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -143,7 +143,7 @@ const Leads = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/leads/updateLead", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/leads/updateLead`, {
         method: "PUT",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

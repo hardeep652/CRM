@@ -69,7 +69,7 @@ const Tasks = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const tasksResponse = await fetch('http://localhost:8080/api/tasks/myTasks', {
+      const tasksResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tasks/myTasks`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -82,7 +82,7 @@ const Tasks = () => {
       const tasksData: Task[] = await tasksResponse.json();
       setTasks(tasksData);
 
-      const leadsResponse = await fetch('http://localhost:8080/api/leads/myLeads', {
+      const leadsResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/leads/myLeads`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -108,8 +108,8 @@ const Tasks = () => {
 
     try {
       const url = editingTask 
-        ? 'http://localhost:8080/api/tasks/updateTask'
-        : 'http://localhost:8080/api/tasks/newTask';
+        ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tasks/updateTask`
+        : `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tasks/newTask`;
       
       const method = editingTask ? 'PUT' : 'POST';
       
@@ -168,7 +168,7 @@ const Tasks = () => {
     
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:8080/api/tasks/deleteTask/${taskId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tasks/deleteTask/${taskId}`, {
         method: 'DELETE',
         credentials: 'include',
       });
