@@ -28,7 +28,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/admin")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://crm-snowy-mu.vercel.app")
 public class AdminController {
     @Autowired
     private PasswordEncoder passwordEncoder;
