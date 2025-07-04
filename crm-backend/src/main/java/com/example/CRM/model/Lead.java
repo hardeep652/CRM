@@ -63,7 +63,7 @@ public class Lead {
     private LocalDateTime updatedAt;
 
    @ManyToOne(fetch = FetchType.EAGER) // <-- Add this
-@JoinColumn(name = "assigned_to_id")
+@JoinColumn(name = "assigned_to")
 private Users assignedTo;
 
 
