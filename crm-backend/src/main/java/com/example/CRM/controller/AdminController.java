@@ -95,24 +95,40 @@ public class AdminController {
         return ResponseEntity.ok("Employee updated successfully: " + existingUser.getName());
     }
 
-    @GetMapping("/allLeads")
-    public ResponseEntity<List<Map<String, Object>>> getAllLeads() {
-        List<Lead> leads = adminService.getAllLeads();
-        List<Map<String, Object>> response = leads.stream().map(lead -> {
-            Map<String, Object> leadMap = new HashMap<>();
-            leadMap.put("id", lead.getId());
-            leadMap.put("name", lead.getName());
-            leadMap.put("email", lead.getEmail());
-            leadMap.put("phone", lead.getPhone());
-            leadMap.put("company", lead.getCompany());
-            leadMap.put("status", lead.getStatus() != null ? lead.getStatus().toString() : null);
-            leadMap.put("createdAt", lead.getCreatedAt() != null ? lead.getCreatedAt().toString() : null);
-            leadMap.put("updatedAt", lead.getUpdatedAt() != null ? lead.getUpdatedAt().toString() : null);
-            leadMap.put("assignedTo", lead.getAssignedTo() != null ? lead.getAssignedTo().getName() : null);
-            return leadMap;
-        }).toList();
-        return ResponseEntity.ok(response);
+   @GetMapping("/allLeads")
+public ResponseEntity<List<Map<String, Object>>> getAllLeads() {
+    List<Lead> leads = adminService.getAllLeads();
+
+    System.out.println("----- DEBUGGING LEADS -----");
+    for (Lead lead : leads) {
+        System.out.println("Lead ID: " + lead.getId() + ", Name: " + lead.getName());
+
+        Users assignedUser = lead.getAssignedTo();
+        if (assignedUser == null) {
+            System.out.println("❌ AssignedTo is NULL");
+        } else {
+            System.out.println("✅ AssignedTo ID: " + assignedUser.getId());
+            System.out.println("✅ AssignedTo Name: " + assignedUser.getName());
+        }
     }
+    System.out.println("---------------------------");
+
+    List<Map<String, Object>> response = leads.stream().map(lead -> {
+        Map<String, Object> leadMap = new HashMap<>();
+        leadMap.put("id", lead.getId());
+        leadMap.put("name", lead.getName());
+        leadMap.put("email", lead.getEmail());
+        leadMap.put("phone", lead.getPhone());
+        leadMap.put("company", lead.getCompany());
+        leadMap.put("status", lead.getStatus() != null ? lead.getStatus().toString() : null);
+        leadMap.put("createdAt", lead.getCreatedAt() != null ? lead.getCreatedAt().toString() : null);
+        leadMap.put("updatedAt", lead.getUpdatedAt() != null ? lead.getUpdatedAt().toString() : null);
+        leadMap.put("assignedTo", lead.getAssignedTo() != null ? lead.getAssignedTo().getName() : null);
+        return leadMap;
+    }).toList();
+
+    return ResponseEntity.ok(response);
+}
 
     @GetMapping("/allClients")
     public ResponseEntity<List<Map<String, Object>>> getAllClients() {
