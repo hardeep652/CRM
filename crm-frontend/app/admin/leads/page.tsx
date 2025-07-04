@@ -13,7 +13,7 @@ interface Lead {
   status: string;
   createdAt: string;
   updatedAt: string;
-  assignedToName: string;
+  assignedTo: string;
 }
 
 const Leads = () => {
@@ -396,7 +396,7 @@ const Leads = () => {
                       </svg>
                       <div>
                         <label className="block text-xs font-medium text-purple-600 uppercase tracking-wide">Assigned To</label>
-                        <p className="text-gray-900 font-semibold">{viewingLead.assignedToName}</p>
+                        <p className="text-gray-900 font-semibold">{viewingLead.assignedTo}</p>
                       </div>
                     </div>
                     <div className="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-gray-400">
