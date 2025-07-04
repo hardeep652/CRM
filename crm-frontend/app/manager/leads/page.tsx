@@ -12,7 +12,7 @@
     status: string;
     createdAt: string;
     updatedAt: string;
-    assignedToName: string;
+    assignedTo: string;
     }
 
     const ManagerLeads = () => {
@@ -449,7 +449,7 @@
                                 <td className="py-4 font-medium text-gray-900">{lead.name}</td>
                                 <td className="py-4 text-gray-600">{lead.email}</td>
                                 <td className="py-4 text-gray-600">{lead.company}</td>
-                                <td className="py-4 text-gray-600">{lead.assignedToName}</td>
+                                <td className="py-4 text-gray-600">{lead.assignedTo}</td>
                                 <td className="py-4 text-gray-600">{new Date(lead.createdAt).toLocaleDateString()}</td>
                                 <td className="py-4 flex space-x-3">
                                 <button
@@ -516,7 +516,7 @@
                                 {getStatusIcon(lead.status)} {lead.status}
                                 </span>
                             </td>
-                            <td className="py-4 text-gray-600">{lead.assignedToName}</td>
+                            <td className="py-4 text-gray-600">{lead.assignedTo}</td>
                             <td className="py-4 text-gray-600">{new Date(lead.updatedAt).toLocaleDateString()}</td>
                             <td className="py-4 flex space-x-2">
                                 <button
@@ -705,7 +705,7 @@
                             </svg>
                             <div>
                             <label className="block text-xs font-medium text-purple-600 uppercase tracking-wide">Assigned To</label>
-                            <p className="text-gray-900 font-semibold">{viewingLead.assignedToName}</p>
+                            <p className="text-gray-900 font-semibold">{viewingLead.assignedTo}</p>
                             </div>
                         </div>
                         <div className="flex items-center p-3 bg-gray-50 rounded-lg border-l-4 border-gray-400">
