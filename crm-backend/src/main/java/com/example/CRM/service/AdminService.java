@@ -12,6 +12,7 @@ import com.example.CRM.repository.AdminRepo;
 import com.example.CRM.repository.ClientRepo;
 import com.example.CRM.repository.LeadRepo;
 import com.example.CRM.repository.UserRepo;
+
 @Service
 public class AdminService  {
 
@@ -23,6 +24,9 @@ public class AdminService  {
 
     @Autowired
     private ClientRepo clientRepo;
+    
+    @Autowired
+    private UserRepo userRepo;
 
     public void saveUser(Users u) {
         adminRepo.save(u);
@@ -34,5 +38,13 @@ public class AdminService  {
 
     public List<Client> getAllClients() {
         return clientRepo.findAll();
+    }
+
+    public List<Users> getAllEmployees() {
+        return userRepo.findAll();
+    }
+
+    public Users getUserById(Long id) {
+        return userRepo.findById(id).orElse(null);
     }
 }

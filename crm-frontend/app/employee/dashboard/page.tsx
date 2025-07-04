@@ -61,8 +61,8 @@ const EmployeeDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Current time: 10:57 PM IST, June 25, 2025
-  const now = new Date('2025-06-25T22:57:00+05:30');
+  // Current time: 3:33 PM IST, June 27, 2025
+  const now = new Date('2025-06-27T15:33:00+05:30');
 
   const fetchData = async () => {
     setIsLoading(true);

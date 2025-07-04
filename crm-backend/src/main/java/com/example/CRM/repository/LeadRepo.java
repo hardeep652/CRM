@@ -10,5 +10,6 @@ import com.example.CRM.model.Users;
 public interface LeadRepo extends JpaRepository<Lead, Long> {
     
         List<Lead> findByAssignedTo(Users user);
+        
 
 }

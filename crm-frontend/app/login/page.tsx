@@ -39,7 +39,7 @@
       if (data.role === "ROLE_ADMIN") {
         window.location.href = "/admin/dashboard";
       } else if (data.role === "ROLE_MANAGER") {
-        window.location.href = "/manager-dashboard";
+        window.location.href = "/manager/dashboard";
       } else if (data.role === "ROLE_EMPLOYEE") {
         window.location.href = "/employee/dashboard";
       } else {
