@@ -6,6 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -61,9 +62,10 @@ public class Lead {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    @ManyToOne
-    @JoinColumn(name = "assigned_to")
-        private Users assignedTo;
+   @ManyToOne(fetch = FetchType.EAGER) // <-- Add this
+@JoinColumn(name = "assigned_to_id")
+private Users assignedTo;
+
 
     // ---------------- Getters and Setters ---------------- //
 
