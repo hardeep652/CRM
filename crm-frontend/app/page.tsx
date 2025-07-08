@@ -443,6 +443,24 @@ export default function MainPage() {
               </h3>
             </div>
             <p className="text-slate-600 mb-6">Built with React, TypeScript, Next.js, and Spring Boot to showcase my full-stack development skills.</p>
+            <div className="mb-6">
+              <h4 className="text-lg font-bold text-slate-800 mb-4">Demo Credentials</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                <div className="bg-white/80 backdrop-blur-sm border border-white/40 rounded-xl p-4 text-left">
+                  <h5 className="text-base font-semibold text-slate-800">Admin</h5>
+                  <p className="text-sm text-slate-600">Username: admin2</p>
+                  <p className="text-sm text-slate-600">Password: admin</p>
+                </div>
+                <div className="bg-white/80 backdrop-blur-sm border border-white/40 rounded-xl p-4 text-left">
+                  <h5 className="text-base font-semibold text-slate-800">Employee</h5>
+                  <p className="text-sm text-slate-600">Username: shivam123</p>
+                  <p className="text-sm text-slate-600">Password: Shivam123</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-600 mt-4">
+                <span className="font-semibold">Flow:</span> Log in as admin to create an employee account, then use the employee credentials to log in and explore the system.
+              </p>
+            </div>
             <p className="text-sm text-slate-500">
               © 2025 CRM Demo. A portfolio project demonstrating modern web development techniques.
             </p>
